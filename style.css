@@ -1,0 +1,11 @@
+.bigger {
+    transition: 0.2s;
+}
+
+.bigger:hover {
+    scale: 1.05
+}
+
+.bigger:active {
+    scale: 1.02;
+}
