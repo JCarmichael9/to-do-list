@@ -9,3 +9,8 @@
 .bigger:active {
     scale: 1.02;
 }
+
+body {
+    background-image: url(imgs/waves.jpg);
+    background-size: cover;
+}
