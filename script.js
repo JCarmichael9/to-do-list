@@ -31,17 +31,22 @@ function displayTasks() {
         let li = document.createElement('li')
         //add bootstrap classes for styling
         li.classList.add(
-            'list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'rounded', 'my-3'
+            'list-group-item', 'd-flex', 'align-items-center', 'rounded', 'my-3'
         )
         //set the inner Html of the li element with task text and a remove button
-        li.innerHTML = `${task} <button class='btn btn-success btn-md' onclick='removeTask(${index})'> √ </button>`
+        li.innerHTML = `<div class='row'><div class='col-6'>${task}</div> <div class='col-6 justify-content-end'><button class='btn btn-success btn-md' onclick='highlightTask(${index})'> √ </button> <button class='btn btn-success btn-md' onclick='removeTask(${index})'> √ </button></div></div>`
         //appen new task to task list
         taskList.appendChild(li)
+        taskAmount.innerText = tasks.length
     })
 }
 
+
+function highlightTask(index) {
+
+}
 //function to remove the taskw he nbutton is clicked
-function removeTask (index) {
+function removeTask(index) {
     //remove the task at the given index fromthe array
     tasks.splice(index, 1)
     //run the function so it clear it 
@@ -51,7 +56,26 @@ function removeTask (index) {
 //event listener for clear all tasks button
 document.getElementById('clearTaskButton').addEventListener('click', function () {
     //removes all tasks
-tasks = []
-//re displays it
-displayTasks()
+    tasks = []
+    //re displays it
+    displayTasks()
 })
+
+document.getElementById('taskInput').addEventListener('keydown', function (event) {
+
+    if (event.key === 'Enter') {
+        let taskInput = document.getElementById('taskInput').value
+        if (taskInput) {
+            //puts the taskInpu into the task array
+            tasks.push(taskInput)
+            //clear out the value of the textbobx so ntohings there
+            document.getElementById('taskInput').value = ''
+            //runs the function we didn't make yet
+            displayTasks()
+            //if there it isn't a value it sends an alert
+        } else {
+            alert('You need to actually put a task you troglodyte')
+        }
+    }
+})
+
