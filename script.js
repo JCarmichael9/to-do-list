@@ -38,10 +38,6 @@ function displayTasks() {
         //appen new task to task list
         taskList.appendChild(li)
     })
-   
-  
-
-
 }
 
 //function to remove the taskw he nbutton is clicked
@@ -51,3 +47,11 @@ function removeTask (index) {
     //run the function so it clear it 
     displayTasks()
 }
+
+//event listener for clear all tasks button
+document.getElementById('clearTaskButton').addEventListener('click', function () {
+    //removes all tasks
+tasks = []
+//re displays it
+displayTasks()
+})
