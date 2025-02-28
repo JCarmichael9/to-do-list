@@ -34,7 +34,12 @@ function displayTasks() {
             'list-group-item', 'd-flex', 'align-items-center', 'rounded', 'my-3'
         )
         //set the inner Html of the li element with task text and a remove button
-        li.innerHTML = `<div class='row'><div class='col-6'>${task}</div> <div class='col-6 justify-content-end'><button class='btn btn-success btn-md' onclick='highlightTask(${index})'> √ </button> <button class='btn btn-success btn-md' onclick='removeTask(${index})'> √ </button></div></div>`
+        li.innerHTML = `<div class='row'>
+        <div class='col-6'>${task}</div> 
+        <div class='col-6 d-flex justify-content-end align-items-center'> 
+        <button class='btn btn-success btn-md' onclick='removeTask(${index})'> √ </button>
+        </div>
+        </div>`
         //appen new task to task list
         taskList.appendChild(li)
         taskAmount.innerText = tasks.length
@@ -51,6 +56,7 @@ function removeTask(index) {
     tasks.splice(index, 1)
     //run the function so it clear it 
     displayTasks()
+    taskAmount.innerText = tasks.length
 }
 
 //event listener for clear all tasks button
@@ -59,6 +65,7 @@ document.getElementById('clearTaskButton').addEventListener('click', function ()
     tasks = []
     //re displays it
     displayTasks()
+    taskAmount.innerText = tasks.length
 })
 
 document.getElementById('taskInput').addEventListener('keydown', function (event) {
